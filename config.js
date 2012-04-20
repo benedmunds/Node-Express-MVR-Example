@@ -2,7 +2,7 @@ module.exports = function(app, express, mongoose){
 
   var config = this;
 
-  app.requireAuth = true;
+  app.requireAuth = false;
 
   //configure everyauth
   app.everyauth.twitter

@@ -9,7 +9,5 @@ module.exports = function(mongoose) {
     date: Date
   });
 
-  this.model = mongoose.model(collection, schema);
-
-  return this;
+  return mongoose.model(collection, schema);
 };
