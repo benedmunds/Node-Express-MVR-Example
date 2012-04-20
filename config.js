@@ -2,7 +2,7 @@ module.exports = function(app, express, mongoose){
 
   var config = this;
 
-  app.requireAuth = false;
+  app.requireAuth = true;
 
   //configure everyauth
   app.everyauth.twitter
@@ -29,13 +29,13 @@ module.exports = function(app, express, mongoose){
   app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
-    app.mongoose.connect('mongodb://localhost/mvcexample');
+    app.mongoose.connect('mongodb://localhost/nodemvr');
   });
 
   app.configure('production', function(){
     app.use(express.errorHandler());
 
-    app.mongoose.connect('mongodb://flame.mongohq.com:27087/mvcexample');
+    app.mongoose.connect('mongodb://flame.mongohq.com:27087/nodemvr');
   });
 
   return config;
