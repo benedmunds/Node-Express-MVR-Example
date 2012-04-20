@@ -1,0 +1,18 @@
+!!!
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+
+    body
+        div.topbar.navbar.navbar-fixed-top
+            div.fill
+                div.container
+                    a(href='/').brand #{title}
+
+                            
+    div.container!= body
+        footer
+            p 
+                | Node.js MVC template by    
+                a(href='http://benedmunds.com')(target='_blank') Ben Edmunds
