@@ -4,14 +4,6 @@ module.exports = function(app, express, mongoose){
 
   app.requireAuth = false;
 
-  //configure everyauth
-  app.everyauth.twitter
-     .consumerKey('yourKey')
-     .consumerSecret('yourSecret')
-     .findOrCreateUser( function (session, accessToken, accessTokenSecret, user) {
-       return 1;
-  }).redirectPath('/');
-
   //generic config
   app.configure(function(){
     app.set('views', __dirname + '/views');
@@ -19,7 +11,6 @@ module.exports = function(app, express, mongoose){
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'topsecret' }));
-    app.use(app.everyauth.middleware());
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
