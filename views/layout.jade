@@ -33,6 +33,12 @@ html
                           else
                             li
                               a(href='/list') List
+                          if page == 'add'
+                            li.active
+                              a(href='/add') Add
+                          else
+                            li
+                              a(href='/add') Add
                         ul(style='float:right').nav.secondary-nav
                           li
                             a(href='#') Login

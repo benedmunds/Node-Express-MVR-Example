@@ -1,0 +1,10 @@
+div.content
+    div.row
+        div.span12
+            h2 Add a new test doc
+            p 
+              form(name='form-testdoc', method='POST', action='/addDoc').form
+                label Test Doc:
+                input(name='name', type='text')
+                span.help-block Enter a new test doc for the test database
+                  

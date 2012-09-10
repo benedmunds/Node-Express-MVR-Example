@@ -70,4 +70,23 @@ module.exports = function(app, models){
     });
   });
 
+  /**
+   *  Add View
+   */
+  app.get('/add', function(req, res){
+		
+
+    if (app.requireAuth === true && req.loggedIn === false)
+      res.redirect('/auth/twitter');
+      
+      //render the add page
+      res.render('add.jade', {
+          locals: {
+            title: 'Node.js Express MVR Template',
+						page: 'add',
+          }
+      });
+  });
+  
+
 };
