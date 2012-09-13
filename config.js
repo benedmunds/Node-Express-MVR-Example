@@ -11,6 +11,7 @@ module.exports = function(app, express, mongoose){
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'topsecret' }));
+    app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
@@ -27,7 +28,7 @@ module.exports = function(app, express, mongoose){
     app.use(express.errorHandler());
 
     //app.mongoose.connect('mongodb://flame.mongohq.com:27087/nodemvr');
-		app.mongoose.connect('mongodb://localhost/nodemvr');
+    app.mongoose.connect('mongodb://localhost/nodemvr');
   });
 
   return config;

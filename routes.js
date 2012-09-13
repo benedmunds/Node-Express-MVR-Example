@@ -1,4 +1,4 @@
-module.exports = function(app, models){
+module.exports = function(app, models, mongoose){
 
   /**
    *  Index
@@ -14,7 +14,7 @@ module.exports = function(app, models){
       res.render('index.jade', {
           locals: {
             title: 'Node.js Express MVR Template',
-						page: 'index',
+            page: 'index',
             examples: docs
           }
       });
@@ -37,7 +37,7 @@ module.exports = function(app, models){
       res.render('list.jade', {
           locals: {
             title: 'Node.js Express MVR Template',
-						page: 'list',
+            page: 'list',
             examples: docs
           }
       });
@@ -62,7 +62,7 @@ module.exports = function(app, models){
       res.render('view.jade', {
           locals: {
             title: 'Node.js Express MVR Template',
-						page: 'view',
+            page: 'view',
             example: doc
           }
       });
@@ -74,7 +74,7 @@ module.exports = function(app, models){
    *  Add View
    */
   app.get('/add', function(req, res){
-		
+
 
     if (app.requireAuth === true && req.loggedIn === false)
       res.redirect('/auth/twitter');
@@ -83,10 +83,38 @@ module.exports = function(app, models){
       res.render('add.jade', {
           locals: {
             title: 'Node.js Express MVR Template',
-						page: 'add',
+            page: 'add'
           }
       });
   });
   
+  /**
+   *  Add test doc
+   */
+   
+  app.post('/posts', function(req, res){
+     //var doc = new Doc({ name: req.body.doc});
+     var now = new Date();
+     var collection = 'examples';
+     var Schema = mongoose.Schema;
+     var ObjectId = Schema.ObjectId;
 
+     var schema = new Schema({
+       author: ObjectId,
+       name: String,
+       date: Date
+     });
+     mongoose.model(collection, schema);
+     var Post = mongoose.model(collection);
+     var post = new Post();
+     post.name = req.param('doc');
+     post.date = now;
+     post.save(function(err) {
+         console.log('error check');
+         if(err) { throw err; }
+         console.log('saved');
+     });
+     res.redirect('/list');
+  });
+  
 };
