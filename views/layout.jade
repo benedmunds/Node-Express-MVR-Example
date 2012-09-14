@@ -1,18 +1,52 @@
 !!!
 html
     head
-        title= title
-        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        if page == 'view'
+          title= example.name + ' - ' + title
+        else
+          title= title
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css')
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js')    
+
 
     body
-        div.topbar.navbar.navbar-fixed-top
-            div.fill
+        div.navbar.navbar-fixed-top
+            div.navbar-inner
                 div.container
+                  a(data-toggle='collapse',data-target='.nav-collapse').btn.btn-navbar 
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
                     a(href='/').brand #{title}
+                    div.nav-collapse
+                        ul.nav
+                          if page == 'index'
+                            li.active
+                              a(href='/') Home
+                          else 
+                            li
+                              a(href='/') Home
+                          if page == 'list'
+                            li.active
+                              a(href='/list') List
+                          else
+                            li
+                              a(href='/list') List
+                          if page == 'add'
+                            li.active
+                              a(href='/add') Add
+                          else
+                            li
+                              a(href='/add') Add
+                        ul(style='float:right').nav.secondary-nav
+                          li
+                            a(href='#') Login
 
                             
-    div.container!= body
+    div.container(style='margin-top: 60px')!= body
         footer
             p 
                 | Node.js MVR template by    
                 a(href='http://benedmunds.com')(target='_blank') Ben Edmunds
+                script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js')

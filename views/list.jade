@@ -1,0 +1,8 @@
+div.content
+    div.row
+        div.span12
+            h2 A List of all the Test Docs
+            ul.unstyled.indent
+                each example in examples
+                    li
+                        a(href="view/#{example._id}")  #{example.name}
