@@ -93,19 +93,8 @@ module.exports = function(app, models, mongoose){
    */
    
   app.post('/posts', function(req, res){
-     //var doc = new Doc({ name: req.body.doc});
      var now = new Date();
-     var collection = 'examples';
-     var Schema = mongoose.Schema;
-     var ObjectId = Schema.ObjectId;
-
-     var schema = new Schema({
-       author: ObjectId,
-       name: String,
-       date: Date
-     });
-     mongoose.model(collection, schema);
-     var Post = mongoose.model(collection);
+     var Post = models.examples;
      var post = new Post();
      post.name = req.param('doc');
      post.date = now;
