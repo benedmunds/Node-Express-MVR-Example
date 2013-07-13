@@ -110,15 +110,15 @@ module.exports = function(app, models, mongoose){
    */
    
   app.post('/delete', function(req, res){
-     var id = req.param('id');
-     models.examples.findById(id, function(err, doc){
-         doc.remove();
-         doc.save(function(err){
-            console.log('error check');
-            if(err) { throw err; }
-            console.log('saved');
-         });
-         res.redirect('/list');
+     var now = new Date();
+     delete
+     post.name = req.param('doc');
+     post.date = now;
+     post.save(function(err) {
+         console.log('error check');
+         if(err) { throw err; }
+         console.log('saved');
      });
+     res.redirect('/list');
   });
 };
