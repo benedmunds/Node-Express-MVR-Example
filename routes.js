@@ -105,5 +105,20 @@ module.exports = function(app, models, mongoose){
      });
      res.redirect('/list');
   });
-  
+    /**
+   *  Add test doc
+   */
+   
+  app.post('/delete', function(req, res){
+     var id = req.param('id');
+     models.examples.findById(id, function(err, doc){
+         doc.remove();
+         doc.save(function(err){
+            console.log('error check');
+            if(err) { throw err; }
+            console.log('saved');
+         });
+         res.redirect('/list');
+     });
+  });
 };
