@@ -5,4 +5,10 @@ div.content
             ul.unstyled.indent
                 each example in examples
                     li
-                        a(href="view/#{example._id}")  #{example.name}
+                        form(name='form-testdoc', method='POST', action='/delete').form
+                            span2
+                                a(href="view/#{example._id}", style='font-size: 18px;')  #{example.name}
+                            &nbsp; &nbsp 
+                            //input(type='hidden', name='_method', value='DELETE')
+                            input(type='hidden', name='id', value='#{example.id}') 
+                            button.btn.btn-danger delete
